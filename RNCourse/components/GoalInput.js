@@ -24,6 +24,7 @@ function GoalInput(props) {
   return (
     <Modal visible={isOpen} animationType="slide">
       <View style={styles.inputContainer}>
+        <Image style={styles.image} source={require("../assets/goal.png")} />
         <TextInput
           style={styles.textInput}
           placeholder="Your course goal!"
@@ -31,8 +32,8 @@ function GoalInput(props) {
           value={enteredGoalText}
         />
         <View style={styles.buttonContainer}>
-          <Button title="Add Goal" onPress={addGoal} />
-          <Button title="Cancel" onPress={closeModal} />
+          <Button color="#b180f0" title="Add Goal" onPress={addGoal} />
+          <Button color="#f31282" title="Cancel" onPress={closeModal} />
         </View>
       </View>
     </Modal>
@@ -44,16 +45,22 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    marginBottom: 24,
-    borderBottomWidth: 1,
-    borderBottomColor: "#cccccc",
+    backgroundColor: "#311b6b",
   },
   textInput: {
     borderWidth: 1,
-    borderColor: "#cccccc",
+    borderColor: "#e4d0ff",
+    backgroundColor: "#e4d0ff",
+    color: "#120438",
     width: "70%",
+    borderRadius: 8,
     marginRight: 8,
-    padding: 8,
+    padding: 16,
+  },
+  image: {
+    width: 100,
+    height: 100,
+    margin: 20,
   },
   buttonContainer: {
     flexDirection: "row",
