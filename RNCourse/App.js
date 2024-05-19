@@ -4,22 +4,44 @@ import GoalItem from "./components/GoalItems";
 import GoalInput from "./components/GoalInput";
 
 export default function App() {
+  const [isOpen, setIsOpen] = useState(false);
   const [courseGoals, setCourseGoals] = useState([]);
 
-  
   function addGoalHandler(enteredGoalText) {
-    setCourseGoals((prev) => [...prev, enteredGoalText]);
+    setCourseGoals((prev) => [
+      ...prev,
+      { id: Math.random().toString(), text: enteredGoalText },
+    ]);
+  }
+
+  function openAddGoalModal() {
+    setIsOpen(true);
+  }
+  function closeAddGoalModal() {
+    setIsOpen(false);
+  }
+
+  function deleteGoalHandler(id) {
+    setCourseGoals((prev) => prev.filter((item) => item.id !== id));
   }
 
   return (
     <View style={styles.appContainer}>
-      <GoalInput addGoalHandler={addGoalHandler} />
+      <Button title="Add New Goal" color="#5e0acc" onPress={openAddGoalModal} />
+      <GoalInput
+        isOpen={isOpen}
+        addGoalHandler={addGoalHandler}
+        closeModal={closeAddGoalModal}
+      />
       <View style={styles.goalsContainer}>
         <FlatList
           data={courseGoals}
           alwaysBounceVertical={false}
+          keyExtractor={(item) => item.id}
           renderItem={(itemData) => {
-            return <GoalItem text={itemData.item} index={itemData.index} />;
+            return (
+              <GoalItem item={itemData.item} onDeleteItem={deleteGoalHandler} />
+            );
           }}
         />
       </View>
