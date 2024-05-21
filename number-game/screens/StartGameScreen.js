@@ -1,8 +1,10 @@
-import { TextInput, View, StyleSheet, Alert, Text } from 'react-native'
+import { TextInput, View, StyleSheet, Alert } from 'react-native'
 import PrimaryButton from '../components/ui/PrimaryButton'
 import { useState } from 'react'
 import Colors from '../constants/colors'
 import Title from '../components/ui/Title'
+import Card from '../components/ui/Card'
+import PrimaryText from '../components/ui/PrimaryText'
 
 function StartGameScreen({ onPickedNumber }) {
   const [enteredNumber, setEnteredNumber] = useState('')
@@ -40,8 +42,8 @@ function StartGameScreen({ onPickedNumber }) {
   return (
     <View style={styles.rootContainer}>
       <Title>Guess my number</Title>
-      <View style={styles.inputContainer}>
-        <Text style={styles.instructionText}>Enter a number</Text>
+      <Card>
+        <PrimaryText>Enter a number</PrimaryText>
         <TextInput
           style={styles.numberInput}
           maxLength={2}
@@ -59,7 +61,7 @@ function StartGameScreen({ onPickedNumber }) {
             <PrimaryButton onPress={confirmInputHandler}>Confirm</PrimaryButton>
           </View>
         </View>
-      </View>
+      </Card>
     </View>
   )
 }
@@ -70,24 +72,7 @@ const styles = StyleSheet.create({
     marginTop: 100,
     alignItems: 'center',
   },
-  inputContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: 36,
-    marginHorizontal: 24,
-    padding: 16,
-    backgroundColor: Colors.primary800,
-    borderRadius: 8,
-    elevation: 10,
-    shadowColor: 'black',
-    shadowOffset: { width: 6, height: 6 },
-    shadowRadius: 10,
-    shadowOpacity: 0.25,
-  },
-  instructionText: {
-    color: Colors.accent500,
-    fontSize: 24,
-  },
+
   numberInput: {
     height: 50,
     width: 50,
