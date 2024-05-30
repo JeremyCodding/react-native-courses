@@ -2,6 +2,7 @@ import { StyleSheet, ImageBackground, SafeAreaView, Text } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient'
 import { useState } from 'react'
 import { useFonts } from 'expo-font'
+import { StatusBar } from 'expo-status-bar'
 
 import StartGameScreen from './screens/StartGameScreen'
 import GameScreen from './screens/GameScreen'
@@ -35,12 +36,15 @@ export default function App() {
 
   if (!fontsLoaded) {
     return (
-      <LinearGradient
-        colors={[Colors.primary700, Colors.accent500]}
-        style={styles.rootScreen}
-      >
-        <Text>Loading App</Text>
-      </LinearGradient>
+      <>
+        <StatusBar style="light" />
+        <LinearGradient
+          colors={[Colors.primary700, Colors.accent500]}
+          style={styles.rootScreen}
+        >
+          <Text>Loading App</Text>
+        </LinearGradient>
+      </>
     )
   }
 
