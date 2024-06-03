@@ -4,11 +4,11 @@ import { useState } from "react";
 import Input from "./Input";
 import Button from "../UI/Button";
 
-function ExpenseForm({ onCancel, onSubmit, submitButtonLabel }) {
+function ExpenseForm({ onCancel, onSubmit, submitButtonLabel, defaultValues }) {
   const [inputValue, setInputValue] = useState({
-    amount: "",
-    date: "",
-    description: "",
+    amount: defaultValues.amount.toString() || "",
+    date: defaultValues.date.toISOString().slice(0, 10) || "",
+    description: defaultValues.description || "",
   });
 
   function inputChangeHandler(inputIdentifier, enteredValue) {
