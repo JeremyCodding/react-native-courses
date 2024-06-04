@@ -4,7 +4,10 @@ const BACKEND_URL =
   "https://react-native-course-440e9-default-rtdb.firebaseio.com";
 
 export async function storeExpense(expenseData) {
-  const response = axios.post(BACKEND_URL + "/expenses.json", expenseData);
+  const response = await axios.post(
+    BACKEND_URL + "/expenses.json",
+    expenseData
+  );
   const id = response.data.name;
   return id;
 }
