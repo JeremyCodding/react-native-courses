@@ -9,10 +9,12 @@ import OutlinedButton from "../UI/OutlinedButton";
 import { Colors } from "../../constants/colors";
 import { useState } from "react";
 import { getMapPreview } from "../../utils/location";
+import { useNavigation } from "@react-navigation/native";
 
 function LocationPicker() {
   const [locationPermissionInformation, requestPermission] =
     useForegroundPermissions();
+  const navigation = useNavigation();
   const [pickedLocation, setPickedLocation] = useState();
   async function verifyPermissions() {
     if (
@@ -48,7 +50,9 @@ function LocationPicker() {
       lng: location.coords.longitude,
     });
   }
-  function pickOnMapHandler() {}
+  function pickOnMapHandler() {
+    navigation.navigate("Map");
+  }
 
   return (
     <View>
